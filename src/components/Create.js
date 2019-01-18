@@ -34,7 +34,12 @@ class Create extends Component{
         axios.post('./api/messageBoard',bodyObj)
         .then(response => {
             console.log(response);
-            
+            this.props.messageBoardFn(response.data)
+        })
+        this.setState({
+            nameInput:'',
+            locationInput: '',
+            messageInput: ''
         })
     }
 
@@ -43,18 +48,21 @@ class Create extends Component{
             <div>
                 <input className="addName"
                 onChange={ (e) => this.handleInputName(e.target.value)}
+                value={this.state.nameInput}
                 placeholder="What is your name?"
                 />
                 <input className="addLocation"
                 onChange={ (e) => this.handleInputLocation(e.target.value)}
+                value={this.state.locationInput}
                 placeholder="Where do you live?"
                 />
                 <input className="addMessage" 
                 onChange={ (e) => this.handleInputMessage(e.target.value)}
+                value={this.state.messageInput}
                 placeholder="Enter message here"
                 />
 
-                <button>Add Message</button>
+                <button onClick={() => this.handleAddToMessageBoard()}>Add Message</button>
 
             </div>
         )
