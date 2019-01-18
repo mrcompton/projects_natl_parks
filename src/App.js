@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 
 import Messages from './components/Messages'
+import Create from './components/Create'
 
 
 class App extends Component {
@@ -11,9 +12,7 @@ class App extends Component {
 
     this.state = {
       messageBoard: [],
-      nameInput:'',
-      locationInput: '',
-      messageInput: ''
+
     }
 
   }
@@ -35,6 +34,7 @@ class App extends Component {
     return (
       <div className="App">
         <p>{mappedMessages}</p>
+        <Create messageBoardProp = {this.state.messageBoard}/>
       </div>
     );
   }
