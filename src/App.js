@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 
+import Messages from './components/Messages'
+
 
 class App extends Component {
   constructor(){
@@ -25,9 +27,14 @@ class App extends Component {
   }
 
   render() {
+    const mappedMessages = this.state.messageBoard.map((eachMessageObj) => {
+      return(
+        <Messages key = {eachMessageObj.id} eachMessage={eachMessageObj}/>
+      ) 
+    })
     return (
       <div className="App">
-        <p>{this.state.messageBoard}</p>
+        <p>{mappedMessages}</p>
       </div>
     );
   }

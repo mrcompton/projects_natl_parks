@@ -8,6 +8,7 @@ app.use( bodyParser.json())
 
 app.get('/api/messageBoard',ctrl.readMessage)
 
+
 app.listen(4000,()=>{
     console.log('We are here at 4000');
 })

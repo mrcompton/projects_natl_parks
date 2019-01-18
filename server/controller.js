@@ -35,5 +35,18 @@ module.exports ={
         // console.log(messageBoard)
         res.status(200).send(messageBoard)
 
+    },
+    createMessage: function(req,res){
+        const newId = messageBoard[messageBoard.length -1].id+1;
+    
+        const newMessage = {
+            id: newId,
+            name: req.body.name,
+            location: req.body.location,
+            message: req.body.message
+        }
+
+        messageBoard.push(newMessage);
+        res.status(200).send(messageBoard)
     }
 }
