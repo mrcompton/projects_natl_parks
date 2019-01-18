@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Messages from './components/Messages'
 import Create from './components/Create'
+import Update from './components/Update'
 
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
       return(
         <Messages key = {eachMessageObj.id} eachMessage={eachMessageObj}/>
       ) 
+
     })
     return (
       <div className="App">
@@ -58,14 +60,28 @@ class App extends Component {
             </div>
     
             <Create messageBoardFn = {this.handleSetStateMessage}/>
+            {
+              this.state.messageBoard.map((message) => {
+                return (
+                  <Update messageBoardFnUp = {this.handleSetStateMessage} 
+                          key = {message.id}
+                          id = {message.id}
+                          name = {message.name}
+                          location = {message.location}
+                          message = {message.message}
+                  />
+                )
+              })
+
+            }
+           
           </div>
     </div>
     
     </div>
   </div>
-        <p>{mappedMessages}</p>
-        <Create messageBoardFn = {this.handleSetStateMessage}/>
-      </div>
+       
+</div>
     );
   }
 }

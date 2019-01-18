@@ -17,7 +17,7 @@ let messageBoard = [
     {
         id: 2,
         name: 'Ryan',
-        location: 'Maine, USA',
+        location: 'Maine',
         message: 'My family and I had a blast hiking through Bryce Canyon!'
     },
 
@@ -47,6 +47,23 @@ module.exports ={
         }
 
         messageBoard.push(newMessage);
+        console.log(messageBoard)
         res.status(200).send(messageBoard)
+    },
+
+    updateMessage: function(req,res){
+        const updateId = +req.params.id;
+        console.log(+req.params.id)
+        const {name, location, message} = req.body;
+        console.log(updateId,name,location,message);
+
+        const messageIndex = messageBoard.findIndex((element) => (element.id === updateId))
+
+        messageBoard[messageIndex].name = name || messageBoard[messageIndex].name;
+        messageBoard[messageIndex].location = location || messageBoard[messageIndex].location;
+        messageBoard[messageIndex].message = message || messageBoard[messageIndex].location;
+
+        res.status(200).send(messageBoard);
+
     }
 }

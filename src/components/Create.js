@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 
+
 class Create extends Component{
     constructor(){
         super()
@@ -31,7 +32,7 @@ class Create extends Component{
             message: this.state.messageInput
         }
 
-        axios.post('./api/messageBoard',bodyObj)
+        axios.post('/api/messageBoard',bodyObj)
         .then(response => {
             console.log(response);
             this.props.messageBoardFn(response.data)
