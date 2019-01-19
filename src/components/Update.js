@@ -24,20 +24,7 @@ class Update extends Component {
     editMessage(val){
         this.setState({message: val})
     }
-    updateName(id,name){
-        axios.put(`/api/messageBoard/${id}/${name}`)
-        .then((response) => {
-            console.log(response)
-            this.props.messageBoardFnUp(response.data)
-        })
-    }
-    updateLocation(id,location){
-        axios.put(`./api/messageBoard?id=${id}`,{location})
-        .then((response) => {
-            console.log(response)
-            this.props.messageBoardFnUp(response.data)
-        })
-    }
+
     updateMessage(){
         const bodyObj = {
             name: this.state.name,
@@ -57,10 +44,10 @@ class Update extends Component {
                 <button onClick={()=>this.updateMessage()}>Edit</button>
                 <button>Delete</button>
                 <textarea value={this.state.location} onChange={(e) => this.editLocation(e.target.value)}></textarea>
-                <button>Edit</button>
+                <button onClick={()=>this.updateMessage()}>Edit</button>
                 <button>Delete</button>
                 <textarea value={this.state.message} onChange={(e) => this.editMessage(e.target.value)}></textarea>
-                <button>Edit</button>
+                <button onClick={()=>this.updateMessage()}>Edit</button>
                 <button>Delete</button>
 
 
