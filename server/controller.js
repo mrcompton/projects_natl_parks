@@ -37,18 +37,54 @@ module.exports ={
 
     },
     createMessage: function(req,res){
-        const newId = messageBoard[messageBoard.length -1].id+1;
+
+        if(messageBoard.id === undefined){
+            const newId = 0;
+            const newMessage = {
+                id: newId,
+                name: req.body.name,
+                location: req.body.location,
+                message: req.body.message
+            }
     
-        const newMessage = {
-            id: newId,
-            name: req.body.name,
-            location: req.body.location,
-            message: req.body.message
+    
+    
+            messageBoard.push(newMessage);
+            console.log(messageBoard)
+            res.status(200).send(messageBoard)
+
+        }
+        else{
+            const newId = messageBoard[messageBoard.length -1].id+1;
+            const newMessage = {
+                id: newId,
+                name: req.body.name,
+                location: req.body.location,
+                message: req.body.message
+            }
+    
+    
+    
+            messageBoard.push(newMessage);
+            console.log(messageBoard)
+            res.status(200).send(messageBoard)
+
         }
 
-        messageBoard.push(newMessage);
-        console.log(messageBoard)
-        res.status(200).send(messageBoard)
+        //const newId = messageBoard[messageBoard.length -1].id+1;
+    
+        // const newMessage = {
+        //     id: newId,
+        //     name: req.body.name,
+        //     location: req.body.location,
+        //     message: req.body.message
+        // }
+
+
+
+        // messageBoard.push(newMessage);
+        // console.log(messageBoard)
+        // res.status(200).send(messageBoard)
     },
 
     updateMessage: function(req,res){
@@ -57,7 +93,7 @@ module.exports ={
         const {name, location, message} = req.body;
         console.log(updateId,name,location,message);
 
-        const messageIndex = messageBoard.findIndex((element) => (element.id === updateId))
+        const messageIndex = messageBoard.findIndex((element) => (element.id === updateId));
 
         messageBoard[messageIndex].name = name || messageBoard[messageIndex].name;
         messageBoard[messageIndex].location = location || messageBoard[messageIndex].location;
@@ -65,7 +101,16 @@ module.exports ={
 
         res.status(200).send(messageBoard);
 
-    }
+    },
 
-    
+    deleteMessage: function(req,res){
+        const deleteId = +req.params.id;
+        const messageIndex = messageBoard.findIndex((element) => (element.id === deleteId));
+        
+        messageBoard = messageBoard.filter((element,index) => (index !== messageIndex))
+
+
+        res.status(200).send(messageBoard)
+
+    }
 }

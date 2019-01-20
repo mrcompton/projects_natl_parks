@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios';
+import Delete from './Delete'
 
 class Update extends Component {
     constructor(props){
@@ -31,7 +32,7 @@ class Update extends Component {
             location: this.state.location,
             message: this.state.message
         }
-        axios.put(`./api/messageBoard/${this.state.id}`, bodyObj)
+        axios.put(`/api/messageBoard/${this.state.id}`, bodyObj)
         .then((response) => {
             console.log(response)
             this.props.messageBoardFnUp(response.data)
@@ -42,13 +43,16 @@ class Update extends Component {
             <section>   
                 <textarea value={this.state.name} onChange={(e) => this.editName(e.target.value)}></textarea>
                 <button onClick={()=>this.updateMessage()}>Edit</button>
-                <button>Delete</button>
                 <textarea value={this.state.location} onChange={(e) => this.editLocation(e.target.value)}></textarea>
                 <button onClick={()=>this.updateMessage()}>Edit</button>
-                <button>Delete</button>
                 <textarea value={this.state.message} onChange={(e) => this.editMessage(e.target.value)}></textarea>
                 <button onClick={()=>this.updateMessage()}>Edit</button>
-                <button>Delete</button>
+                <Delete messageBoardFnDl={this.props.messageBoardFnUp}
+                        id={this.state.id}
+                        name={this.state.name}
+                        location={this.state.location}
+                        message={this.state.message}
+                        />
 
 
             </section>

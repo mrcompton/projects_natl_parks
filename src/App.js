@@ -5,7 +5,6 @@ import axios from 'axios';
 import Messages from './components/Messages'
 import Create from './components/Create'
 import Update from './components/Update'
-import Delete from './components/Delete'
 
 
 class App extends Component {
@@ -74,19 +73,14 @@ class App extends Component {
                 {
                   this.state.messageBoard.map((message) => {
                     return (
-                      <div>
+                      <div id = 'Update'>
                         <Update messageBoardFnUp={this.handleSetStateMessage}
-                        key={message.id}
+                        key = {message.id}
                         id={message.id}
                         name={message.name}
                         location={message.location}
                         message={message.message}
-                        />
-                        <Delete messageBoardFnUp={this.handleSetStateMessage}
-                        id={message.id}
-                        name={message.name}
-                        location={message.location}
-                        message={message.message}
+                        messageBoard = {this.state.messageBoard}
                         />
                       </div>
 
@@ -95,6 +89,7 @@ class App extends Component {
                   })
 
                 }
+
 
               </div>
             </div>
