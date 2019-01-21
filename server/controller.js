@@ -1,34 +1,45 @@
 let messageBoard = [
     {
-        id: 0,
-        name: 'Dave',
+        id: 1,
+        name: 'Josh',
         location: 'Colorado, USA',
         message: 'Dude, the slot canyons at Zions are siiick!'
 
     },
 
     {
-        id: 1,
+        id: 2,
         name: 'Queen Elizabeth',
         location: 'London, UK',
         message: 'I thoroughly enjoyed the views at Arches. They were simply marvelous!'
     },
 
     {
-        id: 2,
+        id: 3,
         name: 'Ryan',
         location: 'Maine',
         message: 'My family and I had a blast hiking through Bryce Canyon!'
     },
 
     {
-        id: 3,
-        name: 'Tanya',
+        id: 4,
+        name: 'Shaela',
         location: 'Minnasota, USA',
         message: 'I loved seeing all the bighorn sheep at Canyonlands!'
     }
 
 ]
+
+let newId = 5;
+
+starWars ={
+    chewName: '',
+    chewPlanet: '',
+    chewQuote: "Grrrawwwww",
+    lukeName: '',
+    lukePlanet: '',
+    lukeQuote: "May the Force be with you"
+}
 
 module.exports ={
     readMessage: function(req,res){
@@ -37,54 +48,23 @@ module.exports ={
 
     },
     createMessage: function(req,res){
-
-        if(messageBoard.id === undefined){
-            const newId = 0;
-            const newMessage = {
-                id: newId,
-                name: req.body.name,
-                location: req.body.location,
-                message: req.body.message
-            }
-    
-    
-    
-            messageBoard.push(newMessage);
-            console.log(messageBoard)
-            res.status(200).send(messageBoard)
-
+        
+        console.log(newId)
+        const newMessage = {
+            id: newId,
+            name: req.body.name,
+            location: req.body.location,
+            message: req.body.message
         }
-        else{
-            const newId = messageBoard[messageBoard.length -1].id+1;
-            const newMessage = {
-                id: newId,
-                name: req.body.name,
-                location: req.body.location,
-                message: req.body.message
-            }
-    
-    
-    
-            messageBoard.push(newMessage);
-            console.log(messageBoard)
-            res.status(200).send(messageBoard)
-
-        }
-
-        //const newId = messageBoard[messageBoard.length -1].id+1;
-    
-        // const newMessage = {
-        //     id: newId,
-        //     name: req.body.name,
-        //     location: req.body.location,
-        //     message: req.body.message
-        // }
+        console.log(newMessage)
+        
+        
+        messageBoard.push(newMessage);
+        console.log(messageBoard)
+        res.status(200).send(messageBoard)
+        newId++;
 
 
-
-        // messageBoard.push(newMessage);
-        // console.log(messageBoard)
-        // res.status(200).send(messageBoard)
     },
 
     updateMessage: function(req,res){

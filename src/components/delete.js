@@ -16,6 +16,7 @@ class Delete extends Component{
 
     }
     handleDelete(){
+
         const bodyObj = {
             id: this.state.id,
             name: this.state.name,

@@ -1,6 +1,7 @@
 
     html,
     body {
+      background-image: url("https://www.nationalgeographic.com/content/dam/travel/2017-digital/utah/zion-national-park/watchman-zion-national-park.ngsversion.1497468749547.adapt.1900.1.jpg");
       background-color:burlywood;
       height: 100%;
       width: 100%;
@@ -14,12 +15,16 @@
 
     #mainWindow {
       width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
 
 
     }
 
     #title {
-      background-color:bisque;
+      background-color:burlywood;
       width: 1394px;
       height: 10%;
       padding:10px;
@@ -29,6 +34,9 @@
       font-family: 'Times New Roman', Times, serif;
       display: flex;
       align-items: center;
+      color: rgb(85, 63, 7);
+      border: 2px black solid;
+      opacity: 0.9;
   
     }
 
@@ -37,13 +45,15 @@
     }
 
     #rightPane {
-      background-color: bisque;
+      background-color: rgb(241, 211, 173);
       margin: 10px;
       width: 858px;
       padding: 10px 10px 10px 25px;
       height: 600px;
       position: static;
-
+      border: 2px black solid;
+      color: rgb(75, 55, 5);
+      opacity: 0.9;
     }
     #survey {
       margin-top: 30px;
@@ -54,6 +64,7 @@
       height: 620px;
       margin: 10px;
       padding: 0px;
+      border: 2px black solid;
     }
 
     #quote {
@@ -62,7 +73,7 @@
       padding-right: 60px;
     }
     #messages {
-      font-size: small;
+      font-size: 16px;
     }
     img{
       height: 150px;
@@ -70,5 +81,21 @@
       margin-top: 20px;
     }
 
-
+    #joke {
+      font-style: italic;
+      color: rgb(43, 42, 40);
+      padding-right: 60px;
+      font-size: 14px;
+    }
   
+    #edit_delete {
+      margin-top: 280px;
+      background-color: slategray;
+      padding: 50px;
+      font-size: 15px;
+    }
+
+    #starWars{
+      font-size: 12px;
+      color: red;
+    }

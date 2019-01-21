@@ -42,6 +42,7 @@ class Create extends Component{
             locationInput: '',
             messageInput: ''
         })
+        
     }
 
     render(){
